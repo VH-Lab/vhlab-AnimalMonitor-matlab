@@ -1,0 +1,14 @@
+{
+  "name": "vhlab_AnimalMonitor",
+  "homepage": "https://github.com/VH-Lab/vhlab_AnimalMonitor",
+  "authors": [
+    "[Stephen D. Van Hooser] <[vanhoosr@brandeis.edu]>"
+  ],
+  "description": "A simple Matlab program for displaying vital signs (EKG, EEG)",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+	  "vhlab_toolbox": "git://github.com/VH-Lab/vhlab_toolbox.git"
+  }
+}
+
