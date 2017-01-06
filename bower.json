@@ -1,6 +1,6 @@
 {
-  "name": "vhlab_AnimalMonitor",
-  "homepage": "https://github.com/VH-Lab/vhlab_AnimalMonitor",
+  "name": "vhlab_mlapp_AnimalMonitor",
+  "homepage": "https://github.com/VH-Lab/vhlab_mlapp_AnimalMonitor",
   "authors": [
     "[Stephen D. Van Hooser] <[vanhoosr@brandeis.edu]>"
   ],
@@ -8,7 +8,7 @@
   "main": "",
   "license": "MIT",
   "dependencies": {
-	  "vhlab_toolbox": "git://github.com/VH-Lab/vhlab_toolbox.git"
+	  "vhlab_mltbx_toolbox": "git://github.com/VH-Lab/vhlab_mltbx_toolbox.git"
   }
 }
 
