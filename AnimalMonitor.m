@@ -161,15 +161,16 @@ switch command,
 			% analyze data
 			ud.EKGtime(end+1) = datenum(data.starttime);
 			%AnimalMonitorAnalyzeEKG(ud.HRparams,ud.EKGt,ud.EKG )
-            ud.EKGvalue(end+1) = AnimalMonitorAnalyzeEKG(ud.HRparams,ud.EKGt,ud.EKG);
-            %ud.EKGvalue(end+1) = 300+rand;
-            [ak, ud.EEGfreq]=fouriercoeffs(ud.EEG, ud.EEGtime(2)-ud.EEGtime(1));
-            [ud.EEGtime(2)-ud.EEGtime(1)]
-            ud.EEGpow=real(ak).*real(ak);
+			ud.EKGvalue(end+1) = AnimalMonitorAnalyzeEKG(ud.HRparams,ud.EKGt,ud.EKG);
+			%ud.EKGvalue(end+1) = 300+rand;
+			[ak, ud.EEGfreq]=fouriercoeffs(ud.EEG, ud.EEGtime(2)-ud.EEGtime(1));
+			[ud.EEGtime(2)-ud.EEGtime(1)]
+			ud.EEGpow=real(ak).*real(ak);
 			% plot data
 			set(fig,'userdata',ud);
 			AnimalMonitor('Plot',[],fig);
 			% save data
+			AnimalMonitorSave(ud.ds,ud.EKG,ud.EKGt);
 			ud.currentloop = ud.currentloop + 1;
 			set(fig,'userdata',ud);
 		end;
@@ -182,7 +183,7 @@ switch command,
 		hold off;
 		if length(ud.EKGtime)>1,
 %			plot((      ud.EKGtime-ud.EKGtime(1))*24,ud.EKGvalue(ud.currentloop+1),'ro-');
-			plot((      ud.EKGtime-ud.EKGtime(1))*24,ud.EKGvalue,'ro-');
+		plot((      ud.EKGtime-ud.EKGtime(1))*24,ud.EKGvalue,'ro-');
 		end;
 		A = axis;
 		hold on;
@@ -192,8 +193,8 @@ switch command,
                 set(gca,'ycolor',0.5*[1 1 1],'xcolor',0.5*[1 1 1]);
                 xlabel('Time (hours)','color',0.5*[1 1 1]);
                 ylabel('Rate (Hz / 60)','color',0.5*[1 1 1]);
-        yrange = [100 450];
-        axis([A(1) A(2) yrange(1:2)]);
+		yrange = [100 450];
+		axis([A(1) A(2) yrange(1:2)]);
 		axes(currax);
 		set(findobj(fig,'tag','LastReadingTxt'),'string',num2str(ud.EKGvalue(end)));
 	case 'PlotEKG',
@@ -224,8 +225,8 @@ switch command,
 		eegpower_axes = findobj(fig,'tag','EEGPowAxes');
 		hold off;
 		plot(ud.EEGfreq(2:end),ud.EEGpow(2:end),'g-');
-        a=axis;
-        axis ([0 40 a(3) a(4)])
+		a=axis;
+		axis ([0 40 a(3) a(4)])
 		set(gca,'tag','EEGPowAxes','color',[0 0 0],'ycolor',0.5*[1 1 1],'xcolor',0.5+[0 0 0]);
                 ylabel('EEG power','color',0.5*[1 1 1]);
                 xlabel('Frequency (Hz)','color',0.5*[1 1 1]);
